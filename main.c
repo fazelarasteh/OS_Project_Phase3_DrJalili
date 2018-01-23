@@ -950,10 +950,8 @@ static inline void mark_readonly(void)
 
 static int __ref kernel_init(void *unused)
 {
-	+       struct sched_param param = { .sched_priority = MAX_RT_PRIO - 1 };
-	        int ret;
-
-	+       /* Sit tight and fasten your seat belt! */
+	 int ret;
+	+       struct sched_param param = { .sched_priority = MAX_RT_PRIO - 1 }; 
 	+       sched_setscheduler_nocheck(current, SCHED_FIFO, &param);
 	kernel_init_freeable();
 	/* need to finish all async __init code before freeing the memory */
